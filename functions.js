@@ -22,3 +22,23 @@ function timeString(timestamp)
 
   return days + "/" + month + " " + hours + ":" + minutes;
 }
+
+/**
+ *
+ * @param {Array} items
+ * @param {Element|String} container
+ */
+function populateList(items, container)
+{
+  if (typeof container == "string")
+    container = document.getElementById(container);
+
+  if (items.length > 0)
+  {
+    container.innerHTML = "";
+    for (var i = 0; i < items.length; i++)
+    {
+      container.innerHTML += "<div>" + items[i].getName() + "</div>";
+    }
+  }
+}

@@ -5,7 +5,7 @@
  * @param {number} price
  * @param {string} desc
  * @param {number} added
- * @param {number} updated
+ * @param {number} [updated]
  * @param {number} [stock]
  * @constructor
  */
@@ -16,7 +16,11 @@ function Product(id, name, price, desc, added, updated, stock)
   this.price = price;
   this.desc = desc;
   this.added = added;
-  this.updated = updated;
+
+  if (typeof updated == "number")
+    this.updated = updated;
+  else
+    this.updated = 0;
 
   if (typeof stock == "number")
     this.stock = stock;
@@ -48,10 +52,20 @@ Product.prototype.getDescription = function()
 
 Product.prototype.getAdded = function()
 {
+  return timeString(this.added);
+};
+
+Product.prototype.getAddedRaw = function()
+{
   return this.added;
 };
 
 Product.prototype.getUpdated = function()
+{
+  return timeString(this.updated);
+};
+
+Product.prototype.getUpdatedRaw = function()
 {
   return this.updated;
 };
