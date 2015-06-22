@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <title>Product Registry</title>
 
+  <link href="styles.css" rel="stylesheet"/>
   <script language="JavaScript" src="class.Product.js"></script>
   <script language="JavaScript" src="functions.js"></script>
 </head>
 <body>
+<div class="mainElement">
   <div id="list">The list goes here</div>
+</div>
 </body>
 </html>
 

@@ -1,0 +1,14 @@
+body
+{
+  background-color : #141B41;
+  color            : #6F9CEB;
+}
+
+.mainElement
+{
+  background-color : #306BAC;
+  color            : #6F9CEB;
+
+  border-radius    : 10px;
+  padding          : 10px;
+}
