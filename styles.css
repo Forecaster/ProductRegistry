@@ -23,6 +23,20 @@ body
   padding          : 10px;
 }
 
+.dialogue
+{
+  position         : fixed;
+  top              : 40%;
+
+  width            : 500px;
+  margin-left      : -255px;
+
+  background-color : #141B41;
+  border           : 1px solid white;
+  border-radius    : 5px;
+  padding          : 10px;
+}
+
 .table
 {
   display : table;
@@ -37,11 +51,12 @@ body
   font-size   : larger;
 }
 
-.heading
+.header
 {
-  display     : table-row;
-  font-weight : bold;
-  text-align  : center;
+  font-weight   : bold;
+  text-align    : center;
+  font-size     : 16pt;
+  margin-bottom : 10px;
 }
 
 .row
@@ -59,4 +74,45 @@ body
   display       : table-cell;
   padding-left  : 5px;
   padding-right : 5px;
+}
+
+.fillw
+{
+  width : 100%;
+}
+
+.buttonClose
+{
+  background-image : url("images/exitButton.png");
+  width            : 40px;
+  height           : 20px;
+
+  position         : absolute;
+  cursor           : pointer;
+}
+
+.buttonClose:hover
+{
+  background-image : url("images/exitButtonActive.png");
+}
+
+.error
+{
+  color            : white;
+  background-color : crimson;
+  padding-left     : 10px;
+}
+
+.warning
+{
+  color            : black;
+  background-color : darkorange;
+  padding-left     : 10px;
+}
+
+.success
+{
+  color            : black;
+  background-color : darkgreen;
+  padding-left     : 10px;
 }

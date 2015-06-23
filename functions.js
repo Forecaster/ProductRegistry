@@ -92,6 +92,63 @@ function deleteItem(id)
   }
 }
 
+function saveProduct()
+{
+  var error = "0";
+
+  var name = document.getElementById("name").value;
+  var price = parseFloat(document.getElementById("price").value);
+  var stock = document.getElementById("stock").value;
+  var desc = document.getElementById("desc").value;
+
+  if (typeof name != "string")
+    error = "Name must be a text string! (" + typeof name + ")";
+  else if (name.length < 2)
+    error = "That name is too short!";
+  else if (typeof price != "number")
+    error = "Price must be a number! (" + typeof price + ")";
+  else if (price.length < 1)
+    error = "No price received!";
+
+  if (error == "0")
+  {
+    if (name != lastSubmitName)
+    {
+      $.post("post_product.php", {name: name, price: price, stock: stock, desc: desc})
+          .done(function (payload)
+          {
+            payload = payload.split(";");
+
+            if (payload[0] == "true")
+            {
+              displaySuccess("The product was successfully added! Close the dialogue or submit another item!");
+              lastSubmitName = name;
+            }
+            else if (payload[0] == "false")
+            {
+              if (payload[1] == "SQLError")
+                displayError("An internal server error occurred while processing the request! Please try again later! If the problem persists please report this issue to an operator.");
+            }
+          })
+          .fail(function (payload)
+          {
+            if (payload.status == 404)
+              displayError("Could not reach the server! Please check your internet connection and try again later.");
+            else if (payload.status == 500)
+              displayError("An internal server error occurred while processing the request! Please try again later! If the problem persists please report this issue to an operator.");
+            else
+              displayError("An unknown error occurred! Please try again later! If the problem persists please report this issue to an operator.");
+          })
+    }
+    else
+    {
+      displayWarning("Are you sure you want to submit an item with the same name twice? If you are sure click submit again.");
+    }
+  }
+  else
+    displayError(error);
+}
+
 function loadProducts()
 {
   //TODO fetch products from database
@@ -117,5 +174,144 @@ function toggleOverlay(state)
       element.style.visibility = "collapse";
     else
       element.style.visibility = "visible";
+  }
+}
+
+/**
+ * @param {string} id
+ */
+function showDialogue(id)
+{
+  var element = document.getElementById(id);
+
+  if (typeof element == "object")
+  {
+    toggleOverlay(true);
+    element.style.left = "50%";
+    activeDialogue = id;
+  }
+}
+
+function hideDialogue()
+{
+  if (typeof activeDialogue == "string")
+  {
+    var element = document.getElementById(activeDialogue);
+
+    if (typeof element == "object")
+    {
+      element.style.left = "-1000px";
+      activeDialogue = null;
+      toggleOverlay(false);
+    }
+  }
+}
+
+/**
+ *
+ * @param {string} msg
+ */
+function displayError(msg)
+{
+  var elements = document.getElementsByClassName("error");
+
+  if (elements.length > 0)
+  {
+    for (var i = 0; i < elements.length; i++)
+    {
+      elements[i].innerHTML = msg;
+    }
+
+    setTimeout(function() {
+      var elements = document.getElementsByClassName("error");
+
+      for (var i = 0; i < elements.length; i++)
+      {
+        elements[i].innerHTML = "";
+      }
+    }, 15000);
+  }
+  console.warn(msg);
+}
+
+function clearErrors()
+{
+  var elements = document.getElementsByClassName("error");
+
+  for (var i = 0; i < elements.length; i++)
+  {
+    elements[i].innerHTML = "";
+  }
+}
+
+/**
+ *
+ * @param {string} msg
+ */
+function displayWarning(msg)
+{
+  var elements = document.getElementsByClassName("warning");
+
+  if (elements.length > 0)
+  {
+    for (var i = 0; i < elements.length; i++)
+    {
+      elements[i].innerHTML = msg;
+    }
+
+    setTimeout(function() {
+      var elements = document.getElementsByClassName("warning");
+
+      for (var i = 0; i < elements.length; i++)
+      {
+        elements[i].innerHTML = "";
+      }
+    }, 15000);
+  }
+}
+
+function clearWarnings()
+{
+  var elements = document.getElementsByClassName("warning");
+
+  for (var i = 0; i < elements.length; i++)
+  {
+    elements[i].innerHTML = "";
+  }
+}
+
+/**
+ *
+ * @param {string} msg
+ */
+function displaySuccess(msg)
+{
+  var elements = document.getElementsByClassName("success");
+
+  if (elements.length > 0)
+  {
+    for (var i = 0; i < elements.length; i++)
+    {
+      elements[i].innerHTML = msg;
+    }
+
+    setTimeout(function() {
+      var elements = document.getElementsByClassName("success");
+
+      for (var i = 0; i < elements.length; i++)
+      {
+        elements[i].innerHTML = "";
+      }
+    }, 15000);
+  }
+}
+
+function clearSuccesses()
+{
+  var elements = document.getElementsByClassName("success");
+
+  for (var i = 0; i < elements.length; i++)
+  {
+    elements[i].innerHTML = "";
   }
 }

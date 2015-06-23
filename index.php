@@ -14,6 +14,25 @@
 </head>
 <body>
 <div class="overlay" id="overlay" style="visibility: collapse;"></div>
+<div class="dialogue" id="addProduct" style="left: -1000px;">
+  <div class="buttonClose" style="top: 0; right: 0;" onclick="hideDialogue();"></div>
+  <div class="header">Add product</div>
+  <div class="error" onclick="clearErrors();" title="Click to clear" style="cursor: pointer;"></div>
+  <div class="warning" onclick="clearWarnings();" title="Click to clear" style="cursor: pointer;"></div>
+  <div class="success" onclick="clearSuccesses();" title="Click to clear" style="cursor: pointer;"></div>
+  <div>Fields with an * are mandatory</div>
+  <div><input type="text" id="name" placeholder="Product Name *" class="fillw"/></div>
+  <div style="display: inline-block;"><input type="text" id="price" placeholder="Price *"/></div>
+  <div style="display: inline-block;"><input type="number" id="stock" placeholder="Stock"/></div>
+  <div>
+    <textarea id="desc" placeholder="Description" style="width: 100%; resize: vertical;"></textarea>
+  </div>
+  <div style="text-align: center;" onclick="saveProduct();">Submit</div>
+</div>
+
+<div class="mainElement" style="margin-bottom: 20px;">
+  <div onclick="showDialogue('addProduct');" style="cursor: pointer;">Add New Product</div>
+</div>
 
 <div class="mainElement">
   <div class="table" id="list">The list goes here</div>
@@ -22,6 +41,9 @@
 </html>
 
 <script language="JavaScript">
+  var activeDialogue;
+  var lastSubmitName;
+
   var tableHeader = "" +
       "<div class=\"row\">" +
       "<div class=\"cell\">Name</div>" +
