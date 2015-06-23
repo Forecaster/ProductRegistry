@@ -2,7 +2,7 @@ function timeString(timestamp)
 {
   if (timestamp > 0)
   {
-    if (timestamp.length == 10)
+    if (timestamp.toString().length == 10)
       timestamp = timestamp * 1000;
 
     var date = new Date();
