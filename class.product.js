@@ -15,7 +15,10 @@ function Product(id, name, price, desc, added, updated, stock)
   this.name = name;
   this.price = price;
   this.desc = desc;
-  this.added = added;
+  this.added = parseInt(added);
+
+  updated = parseInt(updated);
+  stock = parseInt(stock);
 
   if (typeof updated == "number")
     this.updated = updated;
