@@ -33,6 +33,15 @@ function Product(id, name, price, desc, added, updated, stock)
   this.added.writable = false;
 }
 
+Product.prototype.setAll = function(name, price, desc, updated, stock)
+{
+  this.name = name;
+  this.price = price;
+  this.desc = desc;
+  this.updated = updated;
+  this.stock = stock;
+};
+
 Product.prototype.getId = function()
 {
   return this.id;

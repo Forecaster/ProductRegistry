@@ -180,6 +180,15 @@ function updateProduct(id, name, price, stock, desc)
             displaySuccess("The product was successfully updated!");
             changesMade = 0;
             disableUpdateButton();
+
+            for (var i = 0; i < products.length; i++)
+            {
+              if (products[i].getId() == id)
+              {
+                products[i].setAll(name, price, desc, new Date().getTime(), stock);
+              }
+            }
+            populateList(products, "list");
           }
           else if (payload[0] == "false")
           {
