@@ -24,6 +24,14 @@ function timeString(timestamp)
   return days + "/" + month + "/" + year + " " + hours + ":" + minutes;
 }
 
+function truncateString(string, length)
+{
+  if (typeof string == "string" && string.length > length)
+    return string.substr(0, length) + "...";
+  else
+    return string;
+}
+
 /**
  *
  * @param {Array} items
@@ -36,10 +44,50 @@ function populateList(items, container)
 
   if (items.length > 0)
   {
-    container.innerHTML = "";
+    container.innerHTML = tableHeader;
     for (var i = 0; i < items.length; i++)
     {
-      container.innerHTML += "<div>" + items[i].getName() + "</div>";
+      if (typeof items[i] == "object")
+      {
+        container.innerHTML += "" +
+            "<div class=\"row\" id=\"" + items[i].getId() + "\">" +
+              "<div class=\"cell\">" + items[i].getName() + "</div>" +
+              "<div class=\"cell\">" + items[i].getPrice() + "</div>" +
+              "<div class=\"cell\">" + truncateString(items[i].getDescription(), 50) + "</div>" +
+              "<div class=\"cell\">" + items[i].getAdded() + "</div>" +
+              "<div class=\"cell\">" + items[i].getUpdated() + "</div>" +
+              "<div class=\"cell\">" + items[i].getStock() + "</div>" +
+              "<div class=\"cell\" style=\"color: orangered; cursor: pointer;\" onclick=\"deleteItem(parseInt(this.parentNode.id));\"> X </div>" +
+            "</div>"
+      }
     }
   }
+}
+
+/**
+ *
+ * @param {number} id
+ */
+function deleteItem(id)
+{
+  var removed = 0;
+  if (typeof id == "number")
+  {
+    for (var i = 0; i < products.length; i++)
+    {
+      if (products[i].getId() == id)
+      {
+        products.splice(i, 1);
+        removed++;
+      }
+    }
+
+    if (removed > 0)
+      populateList(products, "list");
+  }
+}
+
+function loadProducts()
+{
+  //TODO fetch products from database
 }
