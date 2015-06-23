@@ -6,6 +6,7 @@ function timeString(timestamp)
   var date = new Date();
   date.setTime(timestamp);
 
+  var year = date.getFullYear().toString();
   var days = date.getDay().toString();
   var month = (date.getMonth()+1).toString();
   var hours = date.getHours().toString();
@@ -20,7 +21,7 @@ function timeString(timestamp)
   if (minutes.length == 1)
     minutes = "0" + minutes;
 
-  return days + "/" + month + " " + hours + ":" + minutes;
+  return days + "/" + month + "/" + year + " " + hours + ":" + minutes;
 }
 
 /**
