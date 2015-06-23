@@ -91,3 +91,26 @@ function loadProducts()
 {
   //TODO fetch products from database
 }
+
+/**
+ *
+ * @param {boolean} [state]
+ */
+function toggleOverlay(state)
+{
+  var element = document.getElementById("overlay");
+  if (typeof state == "boolean")
+  {
+    if (state)
+      element.style.visibility = "visible";
+    else
+      element.style.visibility = "collapse";
+  }
+  else
+  {
+    if (element.style.visibility == "visible")
+      element.style.visibility = "collapse";
+    else
+      element.style.visibility = "visible";
+  }
+}
