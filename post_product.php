@@ -5,10 +5,10 @@ require_once "inc_common_functions.php";
 $error = 0;
 $added = time();
 
-$name = $_POST['name'];
+$name = mysqli_escape_string($con, $_POST['name']);
 $price = $_POST['price'];
 $stock = $_POST['stock'];
-$desc = $_POST['desc'];
+$desc = mysqli_escape_string($con, $_POST['desc']);
 
 //These are for manual testing.
 if (isset($_GET['name']))
