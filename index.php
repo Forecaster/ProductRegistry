@@ -28,7 +28,7 @@
   <div>
     <textarea id="desc" placeholder="Description" style="width: 100%; resize: vertical;"></textarea>
   </div>
-  <div style="text-align: center;" onclick="saveProduct();">Submit</div>
+  <div style="text-align: center; cursor: pointer;" onclick="saveProduct();">Submit</div>
 </div>
 
 <div class="dialogue" id="productInfo" style="left: -1000px;">

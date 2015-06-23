@@ -17,7 +17,7 @@ body
 .mainElement
 {
   background-color : #306BAC;
-  color            : #141B41;
+  color            : white; /*#141B41;*/
 
   border-radius    : 10px;
   padding          : 10px;
