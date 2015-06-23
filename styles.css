@@ -23,6 +23,13 @@ body
   padding          : 10px;
 }
 
+.menuItem
+{
+  display      : inline-block;
+  cursor       : pointer;
+  margin-right : 25px;
+}
+
 .dialogue
 {
   position         : fixed;
@@ -69,6 +76,11 @@ body
   background-color : #6F9CEB;
 }
 
+.row2
+{
+  display : table-row;
+}
+
 .cell
 {
   display       : table-cell;
@@ -94,6 +106,21 @@ body
 .buttonClose:hover
 {
   background-image : url("images/exitButtonActive.png");
+}
+
+.buttonUpdateEnabled
+{
+  font-weight : bold;
+  text-align  : center;
+  cursor      : pointer;
+}
+
+.buttonUpdateDisabled
+{
+  font-weight : bold;
+  text-align  : center;
+  cursor      : default;
+  color       : gray;
 }
 
 .error
