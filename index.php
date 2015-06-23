@@ -7,6 +7,10 @@
   <link href="styles.css" rel="stylesheet"/>
   <script language="JavaScript" src="class.Product.js"></script>
   <script language="JavaScript" src="functions.js"></script>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="http://towerofawesome.org/javascriptLibraries/utility_functions.js"></script>
+  <script type="text/javascript" src="http://towerofawesome.org/javascriptLibraries/prototypes.js"></script>
 </head>
 <body>
 <div class="mainElement">
