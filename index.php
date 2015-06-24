@@ -54,7 +54,7 @@
 
 <div class="mainElement" style="margin-bottom: 10px;">
   <div style="display: inline-block;">Search by date added: (yyyy-mm-dd)</div>
-  <div style="display: inline-block;"><input type="date" id="from" placeholder="Start date"/>  -  <input type="date" id="to" placeholder="End date"/></div>
+  <div style="display: inline-block;"><input type="text" id="from" placeholder="Start date"/>  -  <input type="text" id="to" placeholder="End date"/></div>
   <div style="display: inline-block; cursor: pointer;" onclick="searchByDate();">Search</div>
 </div>
 

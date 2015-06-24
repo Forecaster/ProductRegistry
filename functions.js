@@ -14,7 +14,7 @@ function timeString(timestamp)
     date.setTime(timestamp);
 
     var year = date.getFullYear().toString();
-    var days = date.getDay().toString();
+    var days = date.getDate().toString();
     var month = (date.getMonth() + 1).toString();
     var hours = date.getHours().toString();
     var minutes = date.getMinutes().toString();
