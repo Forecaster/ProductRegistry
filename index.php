@@ -49,7 +49,7 @@
 
 <div class="mainElement" style="margin-bottom: 10px;">
   <div class="menuItem" onclick="showDialogue('addProduct');">Add New Product</div>
-  <div class="menuItem" onclick="loadProducts();">Refresh List</div>
+  <div class="menuItem" onclick="loadProducts();">Refresh List/Cancel Search</div>
 </div>
 
 <div class="mainElement" style="margin-bottom: 10px;">
