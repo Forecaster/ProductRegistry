@@ -33,6 +33,10 @@
 
 <div class="dialogue" id="productInfo" style="left: -1000px;">
   <div class="buttonClose" style="top: 0; right: 0;" onclick="hideDialogue();"></div>
+  <div>Click text to edit. Click outside to stop editing.</div>
+  <div class="error" onclick="clearErrors();" title="Click to clear" style="cursor: pointer;"></div>
+  <div class="warning" onclick="clearWarnings();" title="Click to clear" style="cursor: pointer;"></div>
+  <div class="success" onclick="clearSuccesses();" title="Click to clear" style="cursor: pointer;"></div>
   <div class="table">
     <div id="productInfoName" class="title header" onclick="startNameEdit();">Product Name</div>
     <div class="row2">
@@ -63,6 +67,7 @@
 </div>
 
 <div class="mainElement">
+  <div>Click an item name to open info window.</div>
   <div class="table" id="list">It seems there are no products to display at the moment.</div>
 </div>
 </body>
