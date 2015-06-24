@@ -61,8 +61,8 @@ function populateList(items, container)
       if (typeof items[i] == "object")
       {
         container.innerHTML += "" +
-            "<div class=\"row\" id=\"" + items[i].getId() + "\" onclick=\"loadProductInfo(this.id);\" style=\"cursor: pointer;\">" +
-              "<div class=\"cell\">" + items[i].getName() + "</div>" +
+            "<div class=\"row\" id=\"" + items[i].getId() + "\">" +
+              "<div class=\"cell\" onclick=\"loadProductInfo(this.parentNode.id);\" style=\"cursor: pointer;\">" + items[i].getName() + "</div>" +
               "<div class=\"cell\">" + items[i].getPrice() + "</div>" +
               "<div class=\"cell\">" + truncateString(items[i].getDescription(), 50) + "</div>" +
               "<div class=\"cell\">" + items[i].getAdded() + "</div>" +
