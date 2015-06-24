@@ -35,8 +35,8 @@ body
   position         : fixed;
   top              : 40%;
 
-  width            : 500px;
-  margin-left      : -255px;
+  width            : 800px;
+  margin-left      : -405px;
 
   background-color : #141B41;
   border           : 1px solid white;
@@ -146,4 +146,19 @@ body
   color            : black;
   background-color : darkgreen;
   padding-left     : 10px;
+}
+
+a:link
+{
+  color: #918EF4;
+}
+
+a:hover
+{
+  color: #98B9F2;
+}
+
+a:visited
+{
+  color: #6F9CEB;
 }

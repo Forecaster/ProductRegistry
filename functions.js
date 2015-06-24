@@ -234,7 +234,6 @@ function updateProduct(id, name, price, stock, desc)
 }
 
 /**
- *
  * @param {number} [from]
  * @param {number} [to]
  */
@@ -635,20 +634,26 @@ function submitProductUpdate()
 
 function loadProductInfo(id)
 {
-  for (var i = 0; i < products.length; i++)
+  if (typeof products == "object")
   {
-    if (id == products[i].getId())
+    for (var i = 0; i < products.length; i++)
     {
-      lastEditedId = id;
-      document.getElementById("productInfoName").innerHTML = products[i].getName();
-      document.getElementById("productInfoPrice").innerHTML = "Price: " + products[i].getPrice();
-      document.getElementById("productInfoStock").innerHTML = "Stock: " + products[i].getStock();
-      var desc = nl2br(products[i].getDescription());
-      if (desc.length < 1)
-        desc = "<span style=\"color:gray;\">No description</span>";
-      document.getElementById("productInfoDesc").innerHTML = desc;
+      if (id == products[i].getId())
+      {
+        lastEditedId = id;
+        document.getElementById("productInfoLink").innerHTML = "<a href=\"?product=" + id + "\">Link to this item</a>";
+        document.getElementById("productInfoName").innerHTML = products[i].getName();
+        document.getElementById("productInfoPrice").innerHTML = "Price: " + products[i].getPrice();
+        document.getElementById("productInfoStock").innerHTML = "Stock: " + products[i].getStock();
+        var desc = nl2br(products[i].getDescription());
+        if (desc.length < 1)
+          desc = "<span style=\"color:gray;\">No description</span>";
+        document.getElementById("productInfoDesc").innerHTML = desc;
 
-      showDialogue("productInfo");
+        showDialogue("productInfo");
+      }
     }
   }
+  else
+    console.warn("No product list was found.")
 }

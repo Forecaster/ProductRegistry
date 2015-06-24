@@ -13,6 +13,12 @@
   <script type="text/javascript" src="http://towerofawesome.org/javascriptLibraries/prototypes.js"></script>
 </head>
 <body>
+<?
+if (isset($_GET['product']))
+  $product = $_GET['product'];
+else
+  $product = 0;
+?>
 <div class="overlay" id="overlay" style="visibility: collapse;"></div>
 
 <div class="dialogue" id="addProduct" style="left: -1000px;">
@@ -33,12 +39,13 @@
 
 <div class="dialogue" id="productInfo" style="left: -1000px;">
   <div class="buttonClose" style="top: 0; right: 0;" onclick="hideDialogue();"></div>
-  <div>Click text to edit. Click outside to stop editing.</div>
+  <div style="float: left;" id="productInfoLink"></div>
+  <div style="color: gray; float: right; margin-right: 35px;">Click text to edit. Click outside to stop editing.</div>
   <div class="error" onclick="clearErrors();" title="Click to clear" style="cursor: pointer;"></div>
   <div class="warning" onclick="clearWarnings();" title="Click to clear" style="cursor: pointer;"></div>
   <div class="success" onclick="clearSuccesses();" title="Click to clear" style="cursor: pointer;"></div>
   <div class="table">
-    <div id="productInfoName" class="title header" onclick="startNameEdit();">Product Name</div>
+    <div id="productInfoName" class="title header" onclick="startNameEdit();" style="border-top: 1px solid #98B9F2; margin-top: 5px;">Product Name</div>
     <div class="row2">
       <div class="cell" id="productInfoPrice" onclick="startPriceEdit();">Price: $9.99</div>
       <div class="cell" id="productInfoStock" onclick="startStockEdit();">Stock: 1</div>
@@ -68,7 +75,7 @@
 
 <div class="mainElement">
   <div>Click an item name to open info window.</div>
-  <div class="table" id="list">It seems there are no products to display at the moment.</div>
+  <div class="table" id="list"><span style="color: orange;">It seems there are no products to display at the moment. You should add a few!</span></div>
 </div>
 </body>
 </html>
@@ -78,6 +85,8 @@
   var INT_ERROR = "An internal server error occurred while processing the request! Please try again later! If the problem persists please report this issue to an operator.";
   var RCH_ERROR = "Could not reach the server! Please check your internet connection and try again later.";
   var UNK_ERROR = "An unknown error occurred! Please try again later! If the problem persists please report this issue to an operator.";
+
+  var pageBaseURL = "http://towerofawesome.org/productregistry/";
 
   var activeDialogue;
   var lastSubmitName;
@@ -102,4 +111,9 @@
       "</div>";
 
   loadProducts();
+
+  var product = <? echo $product;?>;
+
+  if (product > 0)
+    setTimeout("loadProductInfo(product)", 2000);
 </script>
