@@ -41,10 +41,8 @@
     </div>
   </div>
   <div  style="margin: 5px;" id="productInfoDesc" onclick="startDescEdit();">This is a description</div>
-  <div id="productInfoUpdateButton" class="buttonUpdateDisabled" onclick="submitProductUpdate();">Save Changes</div>
-  <div class="error" onclick="clearErrors();" title="Click to clear" style="cursor: pointer;"></div>
-  <div class="warning" onclick="clearWarnings();" title="Click to clear" style="cursor: pointer;"></div>
-  <div class="success" onclick="clearSuccesses();" title="Click to clear" style="cursor: pointer;"></div>
+  <div class="buttonUpdateDisabled" id="productInfoUpdateButton1" style="float: left; margin-left: 125px;" onclick="submitProductUpdate();">Save</div>
+  <div class="buttonUpdateDisabled" id="productInfoUpdateButton2" style="float: right; margin-right: 125px;" onclick="submitProductUpdate(); hideDialogue();">Save & Close</div>
 </div>
 
 <div class="mainElement" style="margin-bottom: 10px;">

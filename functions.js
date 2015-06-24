@@ -477,16 +477,20 @@ function enableUpdateButton()
 {
   if (changesMade > 0)
   {
-    var element = document.getElementById("productInfoUpdateButton");
+    var element = document.getElementById("productInfoUpdateButton1");
+    element.className = "buttonUpdateEnabled";
 
+    element = document.getElementById("productInfoUpdateButton2");
     element.className = "buttonUpdateEnabled";
   }
 }
 
 function disableUpdateButton()
 {
-  var element = document.getElementById("productInfoUpdateButton");
+  var element = document.getElementById("productInfoUpdateButton1");
+  element.className = "buttonUpdateDisabled";
 
+  element = document.getElementById("productInfoUpdateButton2");
   element.className = "buttonUpdateDisabled";
 }
 
@@ -512,14 +516,12 @@ function stopNameEdit()
   var newName = element.childNodes[0].value;
 
   if (newName != activeName)
-  {
     changesMade += 1;
-    enableUpdateButton();
-  }
 
   element.innerHTML = newName;
   activeName = null;
   currentlyEditing = false;
+  enableUpdateButton();
 }
 
 function startPriceEdit()
@@ -544,14 +546,12 @@ function stopPriceEdit()
   var newPrice = element.childNodes[0].value;
 
   if (newPrice == activePrice)
-  {
     changesMade += 1;
-    enableUpdateButton();
-  }
 
   element.innerHTML = "Price: " + newPrice;
   activePrice = null;
   currentlyEditing = false;
+  enableUpdateButton();
 }
 
 function startStockEdit()
@@ -576,14 +576,12 @@ function stopStockEdit()
   var newStock = element.childNodes[0].value;
 
   if (newStock != activeStock)
-  {
     changesMade += 1;
-    enableUpdateButton();
-  }
 
   element.innerHTML = "Stock: " + newStock;
   activeStock = null;
   currentlyEditing = false;
+  enableUpdateButton();
 }
 
 function startDescEdit()
@@ -611,10 +609,7 @@ function stopDescEdit()
   var newDesc = element.childNodes[0].value;
 
   if (newDesc != activeDesc)
-  {
     changesMade += 1;
-    enableUpdateButton();
-  }
 
   if (newDesc == "")
    element.innerHTML = "<span style=\"color:gray;\">No description</span>";
@@ -622,6 +617,7 @@ function stopDescEdit()
     element.innerHTML = nl2br(newDesc);
   activeDesc = null;
   currentlyEditing = false;
+  enableUpdateButton();
 }
 
 function submitProductUpdate()
