@@ -36,6 +36,7 @@ function timeString(timestamp)
 
 function truncateString(string, length)
 {
+  string = string.replace("<br>", "").replace("</br>", "");
   if (typeof string == "string" && string.length > length)
     return string.substr(0, length) + "...";
   else
