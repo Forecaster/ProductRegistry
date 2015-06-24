@@ -255,7 +255,6 @@ function loadProducts(from, to)
         else
         {
           var items = parse_csv(payload);
-          console.log(items);
           var values = items.values;
 
           products = [];
