@@ -45,7 +45,7 @@ if ($error == 0)
   else
   {
     log_file("[post_product.php] An error occurred for query \"$query\"", "sql.log");
-    log_file(mysqli_error($con), "sql.log");
+    log_file("[post_product.php] ".mysqli_error($con), "sql.log");
     echo "false;SQLError";
   }
 }

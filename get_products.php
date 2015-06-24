@@ -24,7 +24,7 @@ if ($result)
 }
 else
 {
-  log_file("[post_product.php] An error occurred for query \"$query\"", "sql.log");
-  log_file(mysqli_error($con), "sql.log");
+  log_file("[get_product.php] An error occurred for query \"$query\"", "sql.log");
+  log_file("[get_product.php] ".mysqli_error($con), "sql.log");
   echo "false;SQLError";
 }
