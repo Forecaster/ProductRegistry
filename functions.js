@@ -60,7 +60,7 @@ function populateList(items, container)
       if (typeof items[i] == "object")
       {
         container.innerHTML += "" +
-            "<div class=\"row\" id=\"" + items[i].getId() + "\" onclick=\"loadProductInfo(this.id);\">" +
+            "<div class=\"row\" id=\"" + items[i].getId() + "\" onclick=\"loadProductInfo(this.id);\" style=\"cursor: pointer;\">" +
               "<div class=\"cell\">" + items[i].getName() + "</div>" +
               "<div class=\"cell\">" + items[i].getPrice() + "</div>" +
               "<div class=\"cell\">" + truncateString(items[i].getDescription(), 50) + "</div>" +
@@ -83,17 +83,39 @@ function deleteItem(id)
   var removed = 0;
   if (typeof id == "number")
   {
-    for (var i = 0; i < products.length; i++)
-    {
-      if (products[i].getId() == id)
-      {
-        products.splice(i, 1);
-        removed++;
-      }
-    }
+    $.post("delete_product.php", {id: id})
+        .done(function(payload)
+        {
+          payload = payload.split(";");
+          if (payload[0] == "true")
+          {
+            for (var i = 0; i < products.length; i++)
+            {
+              if (products[i].getId() == id)
+              {
+                products.splice(i, 1);
+                removed++;
+              }
+            }
 
-    if (removed > 0)
-      populateList(products, "list");
+            if (removed > 0)
+              populateList(products, "list");
+          }
+          else
+          {
+            if (payload[1] == "SQLError")
+              displayError(SQL_ERROR);
+          }
+        })
+        .fail(function(payload)
+        {
+          if (payload.status == 404)
+            displayError(RCH_ERROR);
+          else if (payload.status == 500)
+            displayError(INT_ERROR);
+          else
+            displayError(UNK_ERROR);
+        })
   }
 }
 
